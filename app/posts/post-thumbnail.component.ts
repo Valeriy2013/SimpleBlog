@@ -3,14 +3,19 @@ import { Component, Input } from '@angular/core'
 @Component({
     selector: 'post-thumbnail',
     template: `
-    <div [routerLink]="['/posts', post.id]" class="well hoverwell thumbnail">
+    <div class="well hoverwell thumbnail">
         <h3>{{post?.title}}</h3>
         <div>{{post?.body}}</div>
         <div>Date: {{post?.date}}</div>
         <hr/>
         <div>
-            <a (click)="editPost()">Edit</a> 
-        </div> 
+            <span>
+            <a  [routerLink]="['/posts', post.id]">Edit</a>
+            </span>
+            <span> 
+            <a (click)="deletePost()">Delete</a> 
+            </span>
+        </div>          
     </div>    
     `,
     styles: [`

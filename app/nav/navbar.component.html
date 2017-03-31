@@ -7,14 +7,14 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a [routerLink]="['/posts']">All Posts</a>
+          <a [routerLink]="['/posts']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Posts</a>
         </li>
-        <li><a [routerLink]="['/posts/new']">Create Post</a></li>        
+        <li><a [routerLink]="['/posts/new']" routerLinkActive="active">Create Post</a></li>        
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>            
-            <a>Welcome</a>
+            <a [routerLink] = "['/user/profile']">Welcome</a>
           </li>
         </ul>
       </div>

@@ -14,7 +14,9 @@ import { PostDetailsComponent } from "./posts/post-details/post-details.componen
 import { appRoutes } from "./routes"
 import { CreatePostComponent } from "./posts/create-post.component";
 import { Error404Component } from "./errors/404.component";
-import { PostRouteActivator } from "./posts/post-details/post-route-activator.service";
+import { PostsListResolver } from "./posts/posts-list-resolver.service";
+import { AuthService } from "./user/auth.service";
+//import { PostRouteActivator } from "./posts/post-details/post-route-activator.service";
 
 
 declare let toastr : Toastr
@@ -37,15 +39,26 @@ declare let toastr : Toastr
               Error404Component
                       
               ],
-  providers: [ 
+  providers: [
+              AuthService, 
               PostService,
+              PostsListResolver,
               {
                 provide: TOASTR_TOKEN, 
                 useValue: toastr
               },
-              PostRouteActivator
+              {
+                provide: 'canDeactivateCreatePost',
+                useValue: checkDirtyState
+              }
   
    ],
   bootstrap:    [ BlogAppComponent ]
 })
 export class AppModule { }
+
+function checkDirtyState(component:CreatePostComponent){
+  if(component.isDirty)
+    return window.confirm('You have not saved this post, do you really want to cancel?')
+  return true
+}

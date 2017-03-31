@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/RX";
 import { IPost } from "./post.model";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { Subject } from 'rxjs/RX'
 
 @Injectable()
 export class PostService {
@@ -10,7 +11,9 @@ export class PostService {
     }
 
     getPosts(){
-        return POSTS
+        let subject = new Subject()
+        setTimeout(() => {subject.next(POSTS); subject.complete();}, 100)
+        return subject
     }
 
     getPost(id:number){
@@ -20,6 +23,10 @@ export class PostService {
      savePost(post){
         post.id = 999       
         POSTS.push(post)
+    }
+
+    deletePost(id:number){
+
     }
 
     // savePost(event): Observable<IPost>{
