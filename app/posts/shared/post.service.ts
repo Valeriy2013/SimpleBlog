@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/RX";
+import { Observable, Subject } from "rxjs/RX";
 import { IPost } from "./post.model";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { Subject } from 'rxjs/RX'
 
 @Injectable()
 export class PostService {
@@ -10,13 +9,13 @@ export class PostService {
     constructor(private http: Http){
     }
 
-    getPosts(){
-        let subject = new Subject()
+    getPosts(): Observable<IPost[]>{
+        let subject = new Subject<IPost[]>()
         setTimeout(() => {subject.next(POSTS); subject.complete();}, 100)
         return subject
     }
 
-    getPost(id:number){
+    getPost(id:number): IPost{
         return POSTS.find(post => post.id === id)
     }
 
@@ -42,7 +41,7 @@ export class PostService {
     }
 }
 
-const POSTS = [
+const POSTS: IPost[] = [
     {
             id: 1,
             title: 'Post #1 title',
@@ -57,7 +56,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '3/3/2017'
+            date: new Date('3/3/2017')
     },
     {
             id: 2,
@@ -73,7 +72,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '12/3/2017'
+            date: new Date('12/3/2017')
     },
     {
             id: 3,
@@ -89,7 +88,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '3/1/2017'
+            date: new Date('3/1/2017')
     },
     {
             id: 4,
@@ -105,7 +104,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '12/11/2017'
+            date: new Date('12/11/2017')
     },
     {
             id: 5,
@@ -121,7 +120,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '12/12/2017'
+            date: new Date('12/12/2017')
     },
     {
             id: 6,
@@ -137,7 +136,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '11/11/2017'
+            date: new Date('11/11/2017')
     },
 
 ]

@@ -14,7 +14,7 @@ import { IPost } from "../shared/post.model";
     ]
 })
 export class PostDetailsComponent implements OnInit {
-        post:any
+        post:IPost
         addMode:boolean
         
         constructor(private postService : PostService, private route : ActivatedRoute){}

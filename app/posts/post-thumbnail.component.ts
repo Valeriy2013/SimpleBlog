@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { IPost } from "./shared/post.model";
 
 @Component({
     selector: 'post-thumbnail',
@@ -8,13 +9,8 @@ import { Component, Input } from '@angular/core'
         <div>{{post?.body}}</div>
         <div>Date: {{post?.date}}</div>
         <hr/>
-        <div>
-            <span>
-            <a  [routerLink]="['/posts', post.id]">Edit</a>
-            </span>
-            <span> 
-            <a (click)="deletePost()">Delete</a> 
-            </span>
+        <div>            
+            <a  [routerLink]="['/posts', post.id]">Edit</a>            
         </div>          
     </div>    
     `,
@@ -25,5 +21,5 @@ import { Component, Input } from '@angular/core'
 
 })
 export class PostThumbnailComponent {
-    @Input() post: any
+    @Input() post: IPost
 }

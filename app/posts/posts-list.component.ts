@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { PostService } from "./shared/post.service";
 import { ActivatedRoute } from "@angular/router";
+import { IPost } from "./shared/post.model";
 
 @Component({
     //selector: 'posts-list',
@@ -16,7 +17,7 @@ import { ActivatedRoute } from "@angular/router";
               `
 })
 export class PostsListComponent implements OnInit {
-    posts: any
+    posts: IPost[]
     constructor(private postService: PostService, private route: ActivatedRoute){
         
     }
