@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'blog-app',
   template: `<h1>My super blog</h1>
              <nav-bar></nav-bar>
-             <posts-list></posts-list>
+             <router-outlet></router-outlet>
             `,
 })
 export class BlogAppComponent  {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { PostService } from "./shared/post.service";
 
 @Component({
-    selector: 'posts-list',
+    //selector: 'posts-list',
     template: `<div>
                     <h2>My posts</h2>
                     <hr/>

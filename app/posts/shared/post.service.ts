@@ -1,9 +1,37 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/RX";
+import { IPost } from "./post.model";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 @Injectable()
 export class PostService {
+
+    constructor(private http: Http){
+    }
+
     getPosts(){
         return POSTS
+    }
+
+    getPost(id:number){
+        return POSTS.find(post => post.id === id)
+    }
+
+     savePost(post){
+        post.id = 999       
+        POSTS.push(post)
+    }
+
+    // savePost(event): Observable<IPost>{
+    //   let headers = new Headers({'Content-Type':'application/json'})
+    //   let options = new RequestOptions({headers: headers})
+    //   return this.http.post(`/api/events`, JSON.stringify(event), options).map((response: Response) => {
+    //     return response.json();
+    //   }).catch(this.handleError);
+    // }
+
+    private handleError(error: Response){
+       return Observable.throw(error.statusText)
     }
 }
 
@@ -70,7 +98,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '13/11/2017'
+            date: '12/11/2017'
     },
     {
             id: 5,
@@ -86,7 +114,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '31/11/2017'
+            date: '12/12/2017'
     },
     {
             id: 6,
@@ -102,7 +130,7 @@ const POSTS = [
                 qwe asd zcx ads qwe asd zcc
                 qwe asd zcx ads qwe asd zcc
             `,
-            date: '23/11/2017'
+            date: '11/11/2017'
     },
 
 ]
