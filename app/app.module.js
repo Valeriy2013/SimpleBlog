@@ -11,6 +11,8 @@ var blog_app_component_1 = require("./blog-app.component");
 var navbar_component_1 = require("./nav/navbar.component");
 var posts_list_component_1 = require("./posts/posts-list.component");
 var post_thumbnail_component_1 = require("./posts/post-thumbnail.component");
+var post_service_1 = require("./posts/shared/post.service");
+var toastr_service_1 = require("./common/toastr.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,6 +26,13 @@ AppModule = __decorate([
             navbar_component_1.NavBarComponent,
             posts_list_component_1.PostsListComponent,
             post_thumbnail_component_1.PostThumbnailComponent
+        ],
+        providers: [
+            post_service_1.PostService,
+            {
+                provide: toastr_service_1.TOASTR_TOKEN,
+                useValue: toastr
+            },
         ],
         bootstrap: [blog_app_component_1.BlogAppComponent]
     })
