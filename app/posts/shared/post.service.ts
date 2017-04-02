@@ -9,33 +9,26 @@ export class PostService {
     constructor(private http: Http){
     }
 
-    getPosts(): Observable<IPost[]>{
-        let subject = new Subject<IPost[]>()
-        setTimeout(() => {subject.next(POSTS); subject.complete();}, 100)
-        return subject
+    getPosts():Observable<IPost[]> {
+      return this.http.get(`/api/posts`).map((response: Response) => {
+          return <IPost[]>response.json();
+      }).catch(this.handleError);
     }
 
-    getPost(id:number): IPost{
-        return POSTS.find(post => post.id === id)
+    getPost(id:number):Observable<IPost>{
+        return this.http.get(`/api/posts/`+ id).map((response: Response) => {
+          return <IPost>response.json();
+        }).catch(this.handleError);
     }
 
-     savePost(post){
-        post.id = 999       
-        POSTS.push(post)
+    savePost(post): Observable<IPost>{
+      let headers = new Headers({'Content-Type':'application/json'})
+      let options = new RequestOptions({headers: headers})
+      return this.http.post(`/api/posts`, JSON.stringify(post), options).map((response: Response) => {
+        return response.json();
+      }).catch(this.handleError);
     }
-
-    deletePost(id:number){
-
-    }
-
-    // savePost(event): Observable<IPost>{
-    //   let headers = new Headers({'Content-Type':'application/json'})
-    //   let options = new RequestOptions({headers: headers})
-    //   return this.http.post(`/api/events`, JSON.stringify(event), options).map((response: Response) => {
-    //     return response.json();
-    //   }).catch(this.handleError);
-    // }
-
+    
     private handleError(error: Response){
        return Observable.throw(error.statusText)
     }

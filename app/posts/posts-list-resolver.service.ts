@@ -8,7 +8,7 @@ export class PostsListResolver implements Resolve<any>{
         
     }
         resolve() {
-            return this.postService.getPosts().map(posts => posts)
-            //return this.eventService.getEvents()
+            //return this.postService.getPosts().map(posts => posts)
+            return this.postService.getPosts()
         }
     }

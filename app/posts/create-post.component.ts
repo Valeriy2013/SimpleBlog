@@ -22,27 +22,11 @@ export class CreatePostComponent {
         
     }
 
-    /*ngOnInit() {
-        this.event = {
-            id: 1,
-            name: 'New Event',
-            date: new Date('9/12/2036'),
-            time: '10:00 am',
-            price: 55.99,
-            imageUrl: '/app/assets/images/angularconnect-shield.png',
-            location: {
-                address: '43 DT',
-                city: 'MyCity',
-                country: 'MyCountry'
-            },
-        }    
-    }*/
-
     savePost(formValues) {
-        // this.postService.savePost(formValues).subscribe(post => {
-        //     this.route.navigate(['/posts'])
-        //     this.isDirty = false            
-        // })        
+         this.postService.savePost(formValues).subscribe(post => {
+             this.route.navigate(['/posts'])
+             this.isDirty = false            
+         })        
     }
 
     cancel(){

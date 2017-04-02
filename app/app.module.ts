@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from "@angular/router";
 import { HttpModule } from '@angular/http'
@@ -15,6 +15,7 @@ import { appRoutes } from "./routes"
 import { CreatePostComponent } from "./posts/create-post.component";
 import { Error404Component } from "./errors/404.component";
 import { PostsListResolver } from "./posts/posts-list-resolver.service";
+import { PostResolver } from "./posts/post-resolver.service";
 import { AuthService } from "./user/auth.service";
 //import { PostRouteActivator } from "./posts/post-details/post-route-activator.service";
 
@@ -42,6 +43,7 @@ declare let toastr : Toastr
   providers: [
               AuthService, 
               PostService,
+              PostResolver,
               PostsListResolver,
               {
                 provide: TOASTR_TOKEN, 

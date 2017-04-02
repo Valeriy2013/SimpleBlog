@@ -10,7 +10,7 @@ import { IPost } from "./shared/post.model";
         <div>Date: {{post?.date}}</div>
         <hr/>
         <div>            
-            <a  [routerLink]="['/posts', post.id]">Edit</a>            
+            <a [routerLink]="['/posts', post.id]">Edit</a>            
         </div>          
     </div>    
     `,
